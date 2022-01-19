@@ -1,3 +1,5 @@
+# https://github.com/regulad/SpiceBot
+
 import discord, os, requests, json
 from discord.ext import commands
 
@@ -10,8 +12,8 @@ async def on_ready():
 @bot.command(name='quote',description='Get Inspired!',aliases=['inspire'])
 async def quote(ctx):
   response = requests.get("https://zenquotes.io/api/random")
-  embed = discord.Embed(title=str(json.loads(response.text)[0]['q'] + " - " + json.loads(response.text)[0]['a']))
-  await ctx.send(embed=embed)
+  # We sucked at asyncio.
+  await ctx.send(embed=discord.Embed(title=str(json.loads(response.text)[0]['q'] + " - " + json.loads(response.text)[0]['a'])))
 
 @bot.command(name='ez',description='gg no re')
 async def ez(ctx):
@@ -23,12 +25,10 @@ async def real(ctx):
   
 @bot.command(name='gummi',description='🐻🐻🐻🐻 🧟 👉😗👈 🌪',aliases=['gummy'])
 async def gummi(ctx):
-  embed = discord.Embed(title="https://vm.tiktok.com/ZMJWJQCSH/")
-  await ctx.send(embed=embed)
+  await ctx.send("https://vm.tiktok.com/ZMJWJQCSH/")
 
 @bot.command(name='derg',description='Nice doggy!',aliases=['dog'])
 async def derg(ctx):
-  embed = discord.Embed(title="░▄▀▄▀▀▀▀▄▀▄░░░░░░░░░\n░█░░░░░░░░▀▄░░░░░░▄░\n█░░▀░░▀░░░░░▀▄▄░░█░█\n█░▄░█▀░▄░░░░░░░▀▀░░█\n█░░▀▀▀▀░░░░░░░░░░░░█\n█░░░░░░░░░░░░░░░░░░█\n█░░░░░░░░░░░░░░░░░░█\n░█░░▄▄░░▄▄▄▄░░▄▄░░█░\n░█░▄▀█░▄▀░░█░▄▀█░▄▀░\n░░▀░░░▀░░░░░▀░░░▀░░░")
-  await ctx.send(embed=embed)
+  await ctx.send(embed=discord.Embed(title="░▄▀▄▀▀▀▀▄▀▄░░░░░░░░░\n░█░░░░░░░░▀▄░░░░░░▄░\n█░░▀░░▀░░░░░▀▄▄░░█░█\n█░▄░█▀░▄░░░░░░░▀▀░░█\n█░░▀▀▀▀░░░░░░░░░░░░█\n█░░░░░░░░░░░░░░░░░░█\n█░░░░░░░░░░░░░░░░░░█\n░█░░▄▄░░▄▄▄▄░░▄▄░░█░\n░█░▄▀█░▄▀░░█░▄▀█░▄▀░\n░░▀░░░▀░░░░░▀░░░▀░░░"))
 
-bot.run(os.getenv('BOT_TOKEN'))
+bot.run(os.environ['BOT_TOKEN'])

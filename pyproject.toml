@@ -10,6 +10,6 @@ license = "GPL-3.0"
 name = "SpiceBot"
 version = "0.1.0"
 [tool.poetry.dependencies]
-discord = "^1.0.1"
+"discord.py" = "^1.0.1"
 python = "^3.8"
 [tool.poetry.dev-dependencies]
